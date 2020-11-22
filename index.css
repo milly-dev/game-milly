@@ -1,0 +1,17 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+
+canvas {
+  border: 2px solid pink;
+  display: block;
+  position: fixed; 
+  background: url("asset/PNG/platformer_background_1/platformer_background_1.png")no-repeat center ;
+  background-size: contain;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+}
+
