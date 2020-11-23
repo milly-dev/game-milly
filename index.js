@@ -1,6 +1,10 @@
+import { Platforme } from "./platform.js";
+import { Coin } from "./coin.js";
+import { Sprite } from "./sprite.js";
+
 //piste audio
-var audio = new Audio("audio-game.mp3");
-audio.play();
+//var audio = new Audio("audio-game.mp3");
+//audio.play();
 //To get the canvas element from HTML to JS
 let canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
@@ -8,12 +12,12 @@ let ctx = canvas.getContext("2d");
 //velocity = inertie
 
 //size of canvas will be equal to the size of HTML
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = 820;
+canvas.height = 460;
 
 //define rectangle by default
 let rectangle = {
-  height: 32,
+  height: 4,
   jumping: true,
   width: 32,
   x: 144, // position of player
@@ -22,8 +26,34 @@ let rectangle = {
   y_velocity: 0,
 };
 
+const paths = [
+  "/asset/PNG/player/walk/Walk (1).png",
+  "/asset/PNG/player/walk/Walk (2).png",
+  "/asset/PNG/player/walk/Walk (3).png",
+  "/asset/PNG/player/walk/Walk (4).png",
+  "/asset/PNG/player/walk/Walk (5).png",
+  "/asset/PNG/player/walk/Walk (6).png",
+  "/asset/PNG/player/walk/Walk (7).png",
+  "/asset/PNG/player/walk/Walk (8).png",
+  "/asset/PNG/player/walk/Walk (9).png",
+  "/asset/PNG/player/walk/Walk (10).png",
+  "/asset/PNG/player/walk/Walk (11).png",
+  "/asset/PNG/player/walk/Walk (12).png",
+  "/asset/PNG/player/walk/Walk (13).png",
+  "/asset/PNG/player/walk/Walk (14).png",
+  "/asset/PNG/player/walk/Walk (15).png",
+  "/asset/PNG/player/walk/Walk (16).png",
+  "/asset/PNG/player/walk/Walk (17).png",
+  "/asset/PNG/player/walk/Walk (18).png",
+  "/asset/PNG/player/walk/Walk (19).png",
+  "/asset/PNG/player/walk/Walk (20).png",
+];
+
+const sprite = new Sprite(ctx, paths, 42, 55);
+
 //keyboard
 let controller = {
+    canJump: true,
   left: false,
   right: false,
   up: false, //when set at true, jump everytime but not when the player is on the platforme
@@ -32,79 +62,101 @@ let controller = {
     console.log(event.keyCode);
     switch (event.keyCode) {
       case 37: // left key
+        if (key_state === true) {
+          sprite.startAnimation();
+        } else {
+          sprite.stopAnimation();
+        }
         controller.left = key_state;
         break;
       case 38: // up key
         controller.up = key_state;
+        if (key_state === false) {
+            controller.canJump = true;
+        }
         break;
       case 39: // right key
+        if (key_state === true) {
+          sprite.startAnimation();
+        } else {
+          sprite.stopAnimation();
+        }
         controller.right = key_state;
         break;
       case 32: // space key
         controller.up = key_state;
+        if (key_state === false) {
+            controller.canJump = true;
+        }
         break;
     }
   },
 };
 
-//platforme
-class Platforme {
-  constructor(x, y, width, height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.img = new Image();
-    this.img.src = "/asset/PNG/platform.png";
-  }
-  draw(ctx) {
-    ctx.fillStyle = "white";
-    ctx.beginPath(); //need to check what is it ?
-    ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fill();
-    ctx.drawImage(this.img, this.x, this.y);
-  }
-}
-
 //to set the position and the sixe of the platforme
 const platformes = [];
-let platforme = new Platforme(100, 410, 650, 4); //2
+let platforme = new Platforme(255, 260, 120, 4);
 platformes.push(platforme);
-platforme = new Platforme(1210, 510, 230, 4); //1
+platforme = new Platforme(105, 290, 120, 4);
 platformes.push(platforme);
-platforme = new Platforme(950, 450, 230, 4); //1bis
+platforme = new Platforme(5, 290, 120, 4);
 platformes.push(platforme);
-platforme = new Platforme(1210, 340, 230, 4); //3
+platforme = new Platforme(600, 290, 120, 4);//1bisright
 platformes.push(platforme);
-platforme = new Platforme(100, 240, 230, 4); //4
+platforme = new Platforme(500, 290, 120, 4);//1
 platformes.push(platforme);
-platforme = new Platforme(900, 240, 230, 4); //5
+platforme = new Platforme(695, 210, 120, 4);//2 right
 platformes.push(platforme);
-platforme = new Platforme(620, 160, 230, 4); //6
+platforme = new Platforme(620, 130, 120, 4);//3 right
 platformes.push(platforme);
-platforme = new Platforme(380, 80, 230, 4); //7
+platforme = new Platforme(695, 50, 120, 4);//4 right
 platformes.push(platforme);
-platforme = new Platforme(1200, 120, 230, 4); //8
+
+platforme = new Platforme(300, 130, 120, 4);//middle avant dernier
+platformes.push(platforme);
+platforme = new Platforme(200, 130, 120, 4);//middle avant dernier
+platformes.push(platforme);
+platforme = new Platforme(100, 60, 120, 4);//middle avant dernier
+platformes.push(platforme);
+platforme = new Platforme(50, 60, 120, 4);//middle avant dernier
+platformes.push(platforme);
+
+platforme = new Platforme(400, 200, 120, 4);//middle
 platformes.push(platforme);
 
 
+platforme = new Platforme(15, 210, 120, 4);
+platformes.push(platforme);
+
+platforme = new Platforme(460, 80, 120, 4);
+platformes.push(platforme);
+
+const coins = [];
+let coin = new Coin(35, 440, 20, 20);
+coins.push(coin);
+
+//
 
 //control the differents case of the rectangle
-//call each frame 
+//call each frame
 
 let loop = function () {
-  if (controller.up && rectangle.jumping == false) { //if player is not jumping and the up key is press, the player jump thanks to the volicity
-    rectangle.y_velocity -= 30; 
+  if (controller.up && rectangle.jumping == false && controller.canJump) {
+    //if player is not jumping and the up key is press, the player jump thanks to the volicity
+    rectangle.y_velocity -= 25;
     rectangle.jumping = true;
+    controller.canJump = false;
   }
 
   if (controller.left) {
-    rectangle.x_velocity -= 0.5;//velocity to the left, so the player go to the left
+    rectangle.x_velocity -= 0.5; //velocity to the left, so the player go to the left
   }
 
   if (controller.right) {
     rectangle.x_velocity += 0.5;
   }
+
+  sprite.update();
 
   //define gravity and friction
   //gravity to get the rectangle to the floor
@@ -115,10 +167,10 @@ let loop = function () {
   rectangle.x_velocity *= 0.9; // friction
   rectangle.y_velocity *= 0.9; // friction, allows to slow down the player
 
-//   // if rectangle is falling below floor line
-  if (rectangle.y > 592) {
+  //   // if rectangle is falling below floor line
+  if (rectangle.y > 372) {
     rectangle.jumping = false;
-    rectangle.y = 592;
+    rectangle.y = 372;
     rectangle.y_velocity = 0;
   }
 
@@ -129,31 +181,50 @@ let loop = function () {
     rectangle.x = -32;
   }
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height), (ctx.fillStyle = "#ff0000"); // clear screen 
+  ctx.clearRect(0, 0, canvas.width, canvas.height), (ctx.fillStyle = "#ff0000"); // clear screen
   //draw player
-  ctx.beginPath(); 
-  ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-  ctx.fill();
+//   ctx.beginPath();
+//   ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+//   ctx.fill();
+
+  sprite.draw(rectangle.x, rectangle.y-sprite.height * 0.8);
 
   //loop all the platforms
   for (let i = 0; i < platformes.length; i++) {
     const platforme = platformes[i];
-    //check the colision 
+    //check the colision
     if (
+        rectangle.y_velocity > 0 &&
       rectangle.y > platforme.y - 32 &&
       rectangle.y < platforme.y + platforme.height &&
       rectangle.x >= platforme.x &&
       rectangle.x <= platforme.x + platforme.width //500
     ) {
       rectangle.jumping = false; //false
-      rectangle.y = platforme.y  - 32;
+      rectangle.y = platforme.y - rectangle.height;
       rectangle.y_velocity = 0;
     }
-//draw platforme
+    //draw platforme
     platforme.draw(ctx);
   }
 
-
+  //loop all the coins
+  for (let i = 0; i < coins.length; i++) {
+    const coin = coins[i];
+    //check the colision
+    if (
+      rectangle.y > coin.y - 32 &&
+      rectangle.y < coin.y + coin.height &&
+      rectangle.x >= coin.x &&
+      rectangle.x <= coin.x + coin.width //500
+    ) {
+      rectangle.jumping = false; //false
+      rectangle.y = coin.y - 32;
+      rectangle.y_velocity = 0;
+    }
+    //draw platforme
+    coin.draw(ctx);
+  }
 
   // call update when the browser is ready to draw again
   window.requestAnimationFrame(loop);
@@ -163,3 +234,4 @@ let loop = function () {
 window.addEventListener("keydown", controller.keyListener);
 window.addEventListener("keyup", controller.keyListener);
 window.requestAnimationFrame(loop);
+

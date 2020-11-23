@@ -6,12 +6,40 @@
 
 
 canvas {
-  border: 2px solid pink;
   display: block;
-  position: fixed; 
+  /*position: fixed*/
   background: url("asset/PNG/platformer_background_1/platformer_background_1.png")no-repeat center ;
   background-size: contain;
-  background-color: rgb(0, 0, 0);
-  width: 100%;
+  background-color: rgb(175, 158, 158);
 }
 
+
+body{
+background : rgb(0, 0, 0);
+}
+
+#container div {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container img {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+#container {
+    padding: 40px;
+    background: black;
+    width: 100%;
+    height: 620px;
+}
+
+body #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
