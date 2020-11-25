@@ -15,3 +15,6 @@ export class Coin {
           ctx.drawImage(this.img, this.x, this.y);
         }
       }
+
+
+      

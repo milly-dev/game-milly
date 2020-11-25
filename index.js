@@ -1,12 +1,10 @@
 import { Platforme } from "./platform.js";
 import { Coin } from "./coin.js";
 import { Sprite } from "./sprite.js";
+import { Monster } from "./monster.js";
 
-//To get the canvas element from HTML to JS
 let canvas = document.querySelector("canvas");
 let ctx = canvas.getContext("2d");
-
-//velocity = inertie
 
 //size of canvas will be equal to the size of HTML
 canvas.width = 820;
@@ -19,7 +17,7 @@ let rectangle = {
   width: 32,
   x: 144, // position of player
   x_velocity: 0,
-  y: 500, //positio of player
+  y: 500, //position of player
   y_velocity: 0,
 };
 
@@ -89,49 +87,121 @@ let controller = {
     }
   },
 };
-
-//to set the position and the sixe of the platforme
+const monsters = [];
 const platformes = [];
-let platforme = new Platforme(255, 260, 120, 4);
-platformes.push(platforme);
-platforme = new Platforme(105, 290, 120, 4);
-platformes.push(platforme);
-platforme = new Platforme(5, 290, 120, 4);
-platformes.push(platforme);
-platforme = new Platforme(600, 290, 120, 4); //1bisright
-platformes.push(platforme);
-platforme = new Platforme(500, 290, 120, 4); //1
-platformes.push(platforme);
-platforme = new Platforme(695, 210, 120, 4); //2 right
-platformes.push(platforme);
-platforme = new Platforme(620, 130, 120, 4); //3 right
-platformes.push(platforme);
-platforme = new Platforme(695, 50, 120, 4); //4 right
-platformes.push(platforme);
-
-platforme = new Platforme(300, 130, 120, 4); //middle avant dernier
-platformes.push(platforme);
-platforme = new Platforme(200, 130, 120, 4); //middle avant dernier
-platformes.push(platforme);
-platforme = new Platforme(100, 60, 120, 4); //middle avant dernier
-platformes.push(platforme);
-platforme = new Platforme(50, 60, 120, 4); //middle avant dernier
-platformes.push(platforme);
-
-platforme = new Platforme(400, 200, 120, 4); //middle
-platformes.push(platforme);
-
-platforme = new Platforme(15, 210, 120, 4);
-platformes.push(platforme);
-
-platforme = new Platforme(460, 80, 120, 4);
-platformes.push(platforme);
-
 const coins = [];
-let coin = new Coin(335, 355, 20, 20);
-coins.push(coin);
+let total = 0;
 
-//
+function loadLevel1() {
+  total = 0;
+  rectangle.x = 144;
+  rectangle.y = 500;
+  let platforme = new Platforme(255, 260, 120, 4);
+  platformes.push(platforme);
+  platforme = new Platforme(105, 290, 120, 4);
+  platformes.push(platforme);
+  platforme = new Platforme(5, 290, 120, 4);
+  platformes.push(platforme);
+  platforme = new Platforme(600, 290, 120, 4); //1bisright
+  platformes.push(platforme);
+  platforme = new Platforme(500, 290, 120, 4); //1
+  platformes.push(platforme);
+  platforme = new Platforme(695, 210, 120, 4); //2 right
+  platformes.push(platforme);
+  platforme = new Platforme(620, 130, 120, 4); //3 right
+  platformes.push(platforme);
+  platforme = new Platforme(695, 50, 120, 4); //4 right
+  platformes.push(platforme);
+  platforme = new Platforme(300, 130, 120, 4); //middle avant dernier
+  platformes.push(platforme);
+  platforme = new Platforme(200, 130, 120, 4); //middle avant dernier
+  platformes.push(platforme);
+  platforme = new Platforme(100, 60, 120, 4); //middle avant dernier
+  platformes.push(platforme);
+  platforme = new Platforme(50, 60, 120, 4); //middle avant dernier
+  platformes.push(platforme);
+  platforme = new Platforme(400, 200, 120, 4); //middle
+  platformes.push(platforme);
+  platforme = new Platforme(15, 210, 120, 4);
+  platformes.push(platforme);
+  platforme = new Platforme(460, 80, 120, 4);
+  platformes.push(platforme);
+  let coin = new Coin(335, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(535, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(105, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(105, 275, 20, 20);
+  coins.push(coin);
+  coin = new Coin(115, 25, 20, 20);
+  coins.push(coin);
+  coin = new Coin(135, 25, 20, 20);
+  coins.push(coin);
+  coin = new Coin(505, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(585, 275, 20, 20);
+  coins.push(coin);
+  coin = new Coin(545, 65, 20, 20);
+  coins.push(coin);
+  coin = new Coin(715, 35, 20, 20);
+  coins.push(coin);
+  coin = new Coin(735, 335, 20, 20);
+  coins.push(coin);
+  coin = new Coin(735, 315, 20, 20);
+  coins.push(coin);
+  coin = new Coin(735, 295, 20, 20);
+  coins.push(coin);
+  coin = new Coin(735, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(755, 335, 20, 20);
+  coins.push(coin);
+  coin = new Coin(755, 315, 20, 20);
+  coins.push(coin);
+  coin = new Coin(755, 295, 20, 20);
+  coins.push(coin);
+  coin = new Coin(755, 355, 20, 20);
+  coins.push(coin);
+  coin = new Coin(115, 45, 20, 20);
+  coins.push(coin);
+  coin = new Coin(135, 45, 20, 20);
+  coins.push(coin);
+  coin = new Coin(415, 185, 20, 20);
+  coins.push(coin);
+  coin = new Coin(235, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(635, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(655, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(675, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(675, 95, 20, 20);
+  coins.push(coin);
+  coin = new Coin(695, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(235, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(295, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(275, 115, 20, 20);
+  coins.push(coin);
+  coin = new Coin(285, 95, 20, 20);
+  coins.push(coin);
+  let monster = new Monster(ctx, 245, 318, 40, 60, 100, -20);
+  monsters.push(monster);
+  monster = new Monster(ctx, 545, 318, 40, 60, 30, -20);
+  monsters.push(monster);
+  monster = new Monster(ctx, 276, 78, 40, 60, 30, -20);
+  monsters.push(monster);
+  monster = new Monster(ctx, 576, 238, 40, 60, 30, -20);
+  monsters.push(monster);
+  monster = new Monster(ctx, 146, 238, 40, 60, 30, -20);
+  monsters.push(monster);
+  monster = new Monster(ctx, 146, 8, 40, 60, 30, -20);
+  monsters.push(monster);
+}
+loadLevel1();
 
 //control the differents case of the rectangle
 //call each frame
@@ -139,19 +209,16 @@ coins.push(coin);
 let loop = function () {
   if (controller.up && rectangle.jumping == false && controller.canJump) {
     //if player is not jumping and the up key is press, the player jump thanks to the volicity
-    rectangle.y_velocity -= 25;
+    rectangle.y_velocity -= 26;
     rectangle.jumping = true;
     controller.canJump = false;
   }
-
   if (controller.left) {
     rectangle.x_velocity -= 0.2; //velocity to the left, so the player go to the left
   }
-
   if (controller.right) {
     rectangle.x_velocity += 0.2;
   }
-
   sprite.update();
 
   //define gravity and friction
@@ -169,7 +236,6 @@ let loop = function () {
     rectangle.y = 372;
     rectangle.y_velocity = 0;
   }
-
   // if rectangle is going off the left and the right of the screen
   if (rectangle.x < -32) {
     rectangle.x = canvas.width;
@@ -179,12 +245,13 @@ let loop = function () {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height), (ctx.fillStyle = "#ff0000"); // clear screen
   //draw player
-     ctx.beginPath();
-    ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-    ctx.fill();
+  ctx.beginPath();
+  ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+  ctx.fill();
 
   sprite.draw(rectangle.x, rectangle.y - sprite.height * 0.8);
-    checkColissions();
+  checkColissions();
+  checkColissionsMonster();
   //loop all the platforms
   for (let i = 0; i < platformes.length; i++) {
     const platforme = platformes[i];
@@ -208,8 +275,6 @@ let loop = function () {
   window.requestAnimationFrame(loop);
 };
 
-var coinSound = new Audio("coinsound.mp3");
-
 function checkColissions() {
   for (let coinIndx = 0; coinIndx < coins.length; coinIndx++) {
     const coin = coins[coinIndx];
@@ -221,10 +286,36 @@ function checkColissions() {
     ) {
       console.log("colision", coinSound);
       //coinSound.play();
-      coin.y = -1000 
+      coin.y = -1000;
+      var coinSound = new Audio("coinsound.mp3");
       coinSound.play();
+      total += 1;
+      const counterValue = document.querySelector(".counter");
+      counterValue.innerHTML = "Total:" + total;
     }
     coin.draw(ctx);
+  }
+}
+
+function checkColissionsMonster() {
+  for (let monsterIndx = 0; monsterIndx < monsters.length; monsterIndx++) {
+    const monster = monsters[monsterIndx];
+    if (
+      rectangle.y > monster.y &&
+      rectangle.y < monster.y + monster.height &&
+      rectangle.x >= monster.x &&
+      rectangle.x <= monster.x + monster.width //500
+    ) {
+      console.log("colision", monsterSound);
+      //coinSound.play();
+      monster.y = -1002;
+      var monsterSound = new Audio("monstersound.wav");
+      monsterSound.play();
+      total -= 1;
+      const counterValue = document.querySelector(".counter");
+      counterValue.innerHTML = "Total:" + total;
+    }
+    monster.draw(ctx);
   }
 }
 
@@ -249,5 +340,3 @@ document.querySelector(".volume").addEventListener("click", () => {
   state.sound = !state.sound;
 });
 console.log(state);
-
-
