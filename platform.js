@@ -6,7 +6,7 @@ export class Platforme {
     this.width = width;
     this.height = height;
     this.img = new Image();
-    this.img.src = "/asset/PNG/platform.png";
+    this.img.src = "./asset/PNG/platform.png";
   }
   draw(ctx) {
     // ctx.fillStyle = "red";

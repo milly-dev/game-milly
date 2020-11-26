@@ -14,7 +14,7 @@ export class Monster {
 
     for (let i = 1; i < this.images.length; i++) {
       this.images[i] = new Image();
-      this.images[i].src = "/asset/PNG/female/Walk (" + i.toString() + ").png";
+      this.images[i].src = "./asset/PNG/female/Walk (" + i.toString() + ").png";
     }
     this.i = 1;
     this.move = 0;

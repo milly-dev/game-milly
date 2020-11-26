@@ -3,7 +3,7 @@ body {
 }
 
 .images-home {
-  background: url("asset/PNG/candy-home.png") no-repeat center -200px;
+  background: url("./asset/PNG/candy-home.png") no-repeat center -200px;
   background-size: cover;
   margin-top: 20px;
   background-position: 0 0;
