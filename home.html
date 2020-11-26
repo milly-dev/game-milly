@@ -3,19 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="home.css" rel="stylesheet" />
-    <title>Home CandyZomb Game</title>
+    <link href="index.css" rel="stylesheet" />
+    <script type="module" src="index.js"></script>
+
+    <title>CandyZomb Game</title>
   </head>
   <body>
-    <main id="main">
-      <div class="images-home">
-        <h1>CandyZomb Game<br /></h1>
-        <img class="zombie" src="zombie2.png" alt="zombie"/>
-        <img class="zombie1" src="female-zombie.png" alt="zombie"/>
-        <img src="33Hn.gif" alt="gif" />
-        <img class="img1" src="4FB4.gif" alt="gif"/>
-        <a href="index.html" class="button_1">Let's play!</a>
+    <div id="container">
+      <div class="images">
+        <div id="heart-images">
+          <img class="heart" src="asset/PNG/heart.png" alt="heart game" />
+          <img class="heart" src="asset/PNG/heart.png" alt="heart game" />
+          <img class="heart" src="asset/PNG/heart.png" alt="heart game" />
+        </div>
+        <p class="counter">total: <span>0</span></p>
+        <img
+          class="volume"
+          src="asset/PNG/volume-up.png"
+          alt="sound background game"
+        />
+        <a href="home.html"
+          ><img src="asset/PNG/home.png" alt="button to go to the home"
+        /></a>
       </div>
-    </main>
+      <div class="canvas">
+        <canvas> </canvas>
+      </div>
+    </div>
   </body>
 </html>
