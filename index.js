@@ -22,26 +22,26 @@ let rectangle = {
 };
 
 const paths = [
-  "/asset/PNG/player/walk/Walk (1).png",
-  "/asset/PNG/player/walk/Walk (2).png",
-  "/asset/PNG/player/walk/Walk (3).png",
-  "/asset/PNG/player/walk/Walk (4).png",
-  "/asset/PNG/player/walk/Walk (5).png",
-  "/asset/PNG/player/walk/Walk (6).png",
-  "/asset/PNG/player/walk/Walk (7).png",
-  "/asset/PNG/player/walk/Walk (8).png",
-  "/asset/PNG/player/walk/Walk (9).png",
-  "/asset/PNG/player/walk/Walk (10).png",
-  "/asset/PNG/player/walk/Walk (11).png",
-  "/asset/PNG/player/walk/Walk (12).png",
-  "/asset/PNG/player/walk/Walk (13).png",
-  "/asset/PNG/player/walk/Walk (14).png",
-  "/asset/PNG/player/walk/Walk (15).png",
-  "/asset/PNG/player/walk/Walk (16).png",
-  "/asset/PNG/player/walk/Walk (17).png",
-  "/asset/PNG/player/walk/Walk (18).png",
-  "/asset/PNG/player/walk/Walk (19).png",
-  "/asset/PNG/player/walk/Walk (20).png",
+  "./asset/PNG/player/walk/Walk (1).png",
+  "./asset/PNG/player/walk/Walk (2).png",
+  "./asset/PNG/player/walk/Walk (3).png",
+  "./asset/PNG/player/walk/Walk (4).png",
+  "./asset/PNG/player/walk/Walk (5).png",
+  "./asset/PNG/player/walk/Walk (6).png",
+  "./asset/PNG/player/walk/Walk (7).png",
+  "./asset/PNG/player/walk/Walk (8).png",
+  "./asset/PNG/player/walk/Walk (9).png",
+  "./asset/PNG/player/walk/Walk (10).png",
+  "./asset/PNG/player/walk/Walk (11).png",
+  "./asset/PNG/player/walk/Walk (12).png",
+  "./asset/PNG/player/walk/Walk (13).png",
+  "./asset/PNG/player/walk/Walk (14).png",
+  "./asset/PNG/player/walk/Walk (15).png",
+  "./asset/PNG/player/walk/Walk (16).png",
+  "./asset/PNG/player/walk/Walk (17).png",
+  "./asset/PNG/player/walk/Walk (18).png",
+  "./asset/PNG/player/walk/Walk (19).png",
+  "./asset/PNG/player/walk/Walk (20).png",
 ];
 
 const sprite = new Sprite(ctx, paths, 42, 55);
@@ -293,7 +293,7 @@ function checkColissions() {
     ) {
       console.log("colision", coinSound);
       coin.y = -1000;
-      var coinSound = new Audio("coinsound.mp3");
+      var coinSound = new Audio("./coinsound.mp3");
       coinSound.play();
       total += 1;
       const counterValue = document.querySelector(".counter");
@@ -314,7 +314,7 @@ function checkColissionsMonster() {
     ) {
       console.log("colision", monsterSound);
       monster.y = -1002;
-      var monsterSound = new Audio("monstersound.wav");
+      var monsterSound = new Audio("./monstersound.wav");
       monsterSound.play();
       life -= 1;
 
@@ -332,13 +332,13 @@ function checkColissionsMonster() {
 
 function gameOver() {
   let imag = new Image();
-  imag.src = "/asset/PNG/game-over.gif";
+  imag.src = "./asset/PNG/game-over.gif";
   ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
 }
 
 function displayWin() {
   let imag = new Image();
-  imag.src = "/asset/PNG/giphy.gif";
+  imag.src = "./asset/PNG/giphy.gif";
   ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
 }
 
