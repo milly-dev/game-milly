@@ -1,4 +1,4 @@
-console.log("version4");
+console.log("version5");
 import { Platforme } from "./platform.js";
 import { Coin } from "./coin.js";
 import { Sprite } from "./sprite.js";
@@ -331,16 +331,18 @@ function checkColissionsMonster() {
   }
 }
 
+let imag = new Image();
+imag.src = "./asset/PNG/game-over.gif";
+
 function gameOver() {
-  let imag = new Image();
-  imag.src = "./asset/PNG/game-over.gif";
   ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
 }
 
+let imagWin = new Image();
+imagWin.src = "./asset/PNG/giphy.gif";
+
 function displayWin() {
-  let imag = new Image();
-  imag.src = "./asset/PNG/giphy.gif";
-  ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(imagWin, 0, 0, canvas.width, canvas.height);
 }
 
 //check if the user press up or down
