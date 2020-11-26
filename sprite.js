@@ -34,8 +34,6 @@ export class Sprite {
     }
 
     draw(x, y) {
-        //this.ctx.save();
-        //        this.ctx.scale(-1, 1);
         this.ctx.drawImage(this.imgs[this.position],
             10,
             10,
@@ -46,8 +44,6 @@ export class Sprite {
             this.width,
             this.height
         );
-        //this.ctx.restore();
-
     }
 }
 

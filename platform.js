@@ -10,7 +10,7 @@ export class Platforme {
   }
   draw(ctx) {
     // ctx.fillStyle = "red";
-    // ctx.beginPath(); //need to check what is it ?
+    // ctx.beginPath(); 
     // ctx.rect(this.x, this.y, this.width, this.height);
     // ctx.fill();
     ctx.drawImage(this.img, this.x, this.y);

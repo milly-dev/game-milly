@@ -3,7 +3,7 @@ body {
 }
 
 .images-home {
-  background: url('asset/PNG/candy-home.png') no-repeat center -200px;
+  background: url("asset/PNG/candy-home.png") no-repeat center -200px;
   background-size: cover;
   margin-top: 20px;
   background-position: 0 0;
@@ -13,7 +13,7 @@ body {
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  border:  rgb(87, 87, 110) ridge 10px;
+  border: rgb(87, 87, 110) ridge 10px;
   position: fixed;
   z-index: 1;
 }
@@ -29,23 +29,24 @@ main {
 }
 
 .images-home p {
-font-size: 20px;
-color: rgb(255, 246, 253);
+  font-size: 20px;
+  color: rgb(255, 246, 253);
 }
 
 main .button_1 {
   display: flex;
   justify-content: center;
   background-color: rgb(235, 70, 180);
-margin: auto;
-height:54px;
-width: 169px;
-cursor: pointer;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-font-size: 20px;
-border:rgb(235, 70, 180) outset 5px;
-text-decoration: none;
-color: rgb(247, 244, 245);
+  margin: auto;
+  height: 54px;
+  width: 169px;
+  cursor: pointer;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+  border: rgb(235, 70, 180) outset 5px;
+  text-decoration: none;
+  color: rgb(247, 244, 245);
 }
 
 .button_1 {
@@ -63,18 +64,15 @@ main .img1 {
   height: 100px;
 }
 
-
-
 main .zombie {
   margin-top: 270px;
- margin-left: 570px;
- position: fixed;
+  margin-left: 570px;
+  position: fixed;
 }
 
 main .zombie1 {
- position: fixed;
- margin-top: 170px;
- width: 200px;
- z-index: 2;
+  position: fixed;
+  margin-top: 170px;
+  width: 200px;
+  z-index: 2;
 }
-

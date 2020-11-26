@@ -91,9 +91,11 @@ const monsters = [];
 const platformes = [];
 const coins = [];
 let total = 0;
+let life = 3;
 
 function loadLevel1() {
   total = 0;
+  life = 3;
   rectangle.x = 144;
   rectangle.y = 500;
   let platforme = new Platforme(255, 260, 120, 4);
@@ -102,25 +104,25 @@ function loadLevel1() {
   platformes.push(platforme);
   platforme = new Platforme(5, 290, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(600, 290, 120, 4); //1bisright
+  platforme = new Platforme(600, 290, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(500, 290, 120, 4); //1
+  platforme = new Platforme(500, 290, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(695, 210, 120, 4); //2 right
+  platforme = new Platforme(695, 210, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(620, 130, 120, 4); //3 right
+  platforme = new Platforme(620, 130, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(695, 50, 120, 4); //4 right
+  platforme = new Platforme(695, 50, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(300, 130, 120, 4); //middle avant dernier
+  platforme = new Platforme(300, 130, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(200, 130, 120, 4); //middle avant dernier
+  platforme = new Platforme(200, 130, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(100, 60, 120, 4); //middle avant dernier
+  platforme = new Platforme(100, 60, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(50, 60, 120, 4); //middle avant dernier
+  platforme = new Platforme(50, 60, 120, 4);
   platformes.push(platforme);
-  platforme = new Platforme(400, 200, 120, 4); //middle
+  platforme = new Platforme(400, 200, 120, 4);
   platformes.push(platforme);
   platforme = new Platforme(15, 210, 120, 4);
   platformes.push(platforme);
@@ -188,23 +190,20 @@ function loadLevel1() {
   coins.push(coin);
   coin = new Coin(285, 95, 20, 20);
   coins.push(coin);
-  let monster = new Monster(ctx, 245, 318, 40, 60, 100, -20);
+  let monster = new Monster(ctx, 245, 318, 40, 60, -200, 200);
   monsters.push(monster);
-  monster = new Monster(ctx, 545, 318, 40, 60, 30, -20);
+  monster = new Monster(ctx, 545, 318, 40, 60, -500, 220);
   monsters.push(monster);
-  monster = new Monster(ctx, 276, 78, 40, 60, 30, -20);
+  monster = new Monster(ctx, 276, 78, 40, 60, -70, 100);
   monsters.push(monster);
-  monster = new Monster(ctx, 576, 238, 40, 60, 30, -20);
+  monster = new Monster(ctx, 576, 238, 40, 60, -80, 110);
   monsters.push(monster);
-  monster = new Monster(ctx, 146, 238, 40, 60, 30, -20);
+  monster = new Monster(ctx, 146, 238, 40, 60, -140, 40);
   monsters.push(monster);
-  monster = new Monster(ctx, 146, 8, 40, 60, 30, -20);
+  monster = new Monster(ctx, 146, 8, 40, 60, -100, 30);
   monsters.push(monster);
 }
 loadLevel1();
-
-//control the differents case of the rectangle
-//call each frame
 
 let loop = function () {
   if (controller.up && rectangle.jumping == false && controller.canJump) {
@@ -245,9 +244,9 @@ let loop = function () {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height), (ctx.fillStyle = "#ff0000"); // clear screen
   //draw player
-  ctx.beginPath();
-  ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-  ctx.fill();
+  // ctx.beginPath();
+  // ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+  // ctx.fill();
 
   sprite.draw(rectangle.x, rectangle.y - sprite.height * 0.8);
   checkColissions();
@@ -271,6 +270,14 @@ let loop = function () {
     platforme.draw(ctx);
   }
 
+  if (life < 1) {
+    gameOver();
+  }
+
+  if (total >= 30) {
+    displayWin();
+  }
+
   // call update when the browser is ready to draw again
   window.requestAnimationFrame(loop);
 };
@@ -285,7 +292,6 @@ function checkColissions() {
       rectangle.x <= coin.x + coin.width //500
     ) {
       console.log("colision", coinSound);
-      //coinSound.play();
       coin.y = -1000;
       var coinSound = new Audio("coinsound.mp3");
       coinSound.play();
@@ -307,16 +313,33 @@ function checkColissionsMonster() {
       rectangle.x <= monster.x + monster.width //500
     ) {
       console.log("colision", monsterSound);
-      //coinSound.play();
       monster.y = -1002;
       var monsterSound = new Audio("monstersound.wav");
       monsterSound.play();
-      total -= 1;
-      const counterValue = document.querySelector(".counter");
-      counterValue.innerHTML = "Total:" + total;
+      life -= 1;
+
+      const heartImages = document.getElementById("heart-images");
+      heartImages.innerHTML = "";
+
+      for (let i = 0; i < life; i++) {
+        heartImages.innerHTML +=
+          '<img class="heart" src="asset/PNG/heart.png" alt="" />';
+      }
     }
     monster.draw(ctx);
   }
+}
+
+function gameOver() {
+  let imag = new Image();
+  imag.src = "/asset/PNG/game-over.gif";
+  ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
+}
+
+function displayWin() {
+  let imag = new Image();
+  imag.src = "/asset/PNG/giphy.gif";
+  ctx.drawImage(imag, 0, 0, canvas.width, canvas.height);
 }
 
 //check if the user press up or down
@@ -329,7 +352,6 @@ let state = {
 };
 
 var audio = new Audio("audio-game.mp3");
-
 
 document.querySelector(".volume").addEventListener("click", () => {
   if (state.sound === true) {
