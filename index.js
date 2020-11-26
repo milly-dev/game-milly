@@ -1,4 +1,4 @@
-console.log("version3");
+console.log("version4");
 import { Platforme } from "./platform.js";
 import { Coin } from "./coin.js";
 import { Sprite } from "./sprite.js";

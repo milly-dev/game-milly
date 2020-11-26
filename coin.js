@@ -5,7 +5,7 @@ export class Coin {
           this.width = width;
           this.height = height;
           this.img = new Image();
-          this.img.src = "/asset/PNG/coins.png";
+          this.img.src = "./asset/PNG/coins.png";
         }
         draw(ctx) {
         //   ctx.fillStyle = "#fffff";
