@@ -11,7 +11,7 @@ export class Monster {
     this.left = left;
     this.right = right;
     this.ctx = ctx;
-
+    this.flip = true;
     for (let i = 1; i < this.images.length; i++) {
       this.images[i] = new Image();
       this.images[i].src = "./asset/PNG/female/Walk (" + i.toString() + ").png";
@@ -31,21 +31,23 @@ export class Monster {
 
     if (this.move < this.left) {
       this.direction = 0.5;
+      this.flip = true;
     } else if (this.move > this.right) {
       this.direction = -0.5;
+      this.flip = false;
     }
 
-    // this.sprite.update();
-    // ctx.fillStyle = "#fffff";
-    // ctx.beginPath(); 
-    // ctx.rect(this.x, this.y, this.width, this.height);
-    // ctx.fill();
+    this.ctx.save();
+    if (this.flip) {
+      this.ctx.scale(-1, 1);
+    }
     ctx.drawImage(
       this.images[Math.floor(Math.trunc(this.i))],
-      this.x,
+      this.flip ? -this.x - this.width : this.x,
       this.y,
       this.width,
       this.height
     );
+    this.ctx.restore();
   }
 }

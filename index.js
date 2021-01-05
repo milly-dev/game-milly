@@ -59,6 +59,7 @@ let controller = {
     switch (event.keyCode) {
       case 37: // left key
         if (key_state === true) {
+          sprite.left();
           sprite.startAnimation();
         } else {
           sprite.stopAnimation();
@@ -73,6 +74,7 @@ let controller = {
         break;
       case 39: // right key
         if (key_state === true) {
+          sprite.right();
           sprite.startAnimation();
         } else {
           sprite.stopAnimation();
