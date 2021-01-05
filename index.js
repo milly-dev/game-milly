@@ -147,8 +147,8 @@ function loadLevel1() {
   coins.push(coin);
   coin = new Coin(585, 275, 20, 20);
   coins.push(coin);
-  coin = new Coin(545, 65, 20, 20);
-  coins.push(coin);
+  // coin = new Coin(545, 65, 20, 20);
+  // coins.push(coin);
   coin = new Coin(715, 35, 20, 20);
   coins.push(coin);
   coin = new Coin(735, 335, 20, 20);
